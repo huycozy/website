@@ -1,0 +1,56 @@
+---
+title: Component theme normalization (BottomAppBarTheme update)
+description: >-
+  `BottomAppBarTheme` have been normalized to follow
+  Flutter's convention for component themes in the Material library.
+---
+
+## Summary
+
+`BottomAppBarTheme` were refactored to 
+conform to Flutter's conventions for component themes. `BottomAppBarThemeData` were added to
+define overrides for the defaults of the component visual properties.
+Releases of Flutter continue to normalize component themes like these for
+a more consistent theming experience in the material library.
+
+## Migration guide
+
+In `ThemeData`:
+
+- The type of `bottomAppBarTheme` property has been
+  changed from `BottomAppBarTheme` to `BottomAppBarThemeData`.
+
+The return type of the component theme `xTheme.of()` methods and
+`Theme.of().xTheme` have also changed to `xThemeData` accordingly.
+
+Code before migration:
+
+```dart
+final BottomAppBarTheme bottomAppBarTheme = Theme.of(context).bottomAppBarTheme;
+final BottomAppBarTheme bottomAppBarTheme = BottomAppBarTheme.of(context);
+```
+
+Code after migration:
+
+```dart
+final BottomAppBarThemeData bottomAppBarTheme = Theme.of(context).bottomAppBarTheme;
+final BottomAppBarThemeData bottomAppBarTheme = BottomAppBarTheme.of(context);
+```
+
+## Timeline
+
+Landed in version: 3.32.0-1.0.pre<br>
+Stable release: 3.32
+
+## References
+
+API documentation:
+
+* [`BottomAppBarTheme`][]
+
+Relevant PRs:
+
+* [Normalize ThemeData.bottomAppBarTheme][]
+
+[`BottomAppBarTheme`]: {{site.api}}/flutter/material/BottomAppBarTheme-class.html
+[Normalize ThemeData.bottomAppBarTheme]: {{site.repo.flutter}}/pull/168586
